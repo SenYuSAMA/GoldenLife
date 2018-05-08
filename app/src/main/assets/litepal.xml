@@ -1,0 +1,13 @@
+<litepal>
+    <dbname value="golden"/>
+
+    <version value="1"/>
+
+    <list>
+        <mapping class="com.goldenlife.android.db.AuActual"/>
+        <mapping class="com.goldenlife.android.db.AgActual"/>
+        <mapping class="com.goldenlife.android.db.PtActual"/>
+        <mapping class="com.goldenlife.android.db.PdActual"/>
+    </list>
+
+</litepal>

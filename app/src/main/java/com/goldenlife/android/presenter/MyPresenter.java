@@ -25,8 +25,9 @@ public class MyPresenter {
 
 
     public MyPresenter(ViewInt mViewInt){
-        this.mViewInt = mViewInt;
-        mmodelInt = new ModelImp();//*****曾因此句话丢失导致空指针错误！！！！
+
+            this.mViewInt = mViewInt;
+            mmodelInt = new ModelImp();//*****曾因此句话丢失导致空指针错误！！！！
     }
 
     public void parseJson(){
@@ -43,7 +44,6 @@ public class MyPresenter {
             public void onFailure(Call call, IOException e) {
                 if(mViewInt != null){
                     mViewInt.showError();
-                    Log.d("onfailure","onfailure被调用");
                 }
             }
 
@@ -54,12 +54,10 @@ public class MyPresenter {
                 Log.d("onResponse","刚好获取完result");
                         if(result != null){
                             //将解析回来的JSon对象转化成的Result对象对应一一赋值给各种Actual
-                            Log.d("onResponse","准备调用tellmodlesave");
                             tellmodlesave(result);
-                            /*mmodelInt.savetoDB(result);*/
-
-                            Log.d("onResponse","准备调用showSuccess()");
-                           tellviewshowsuccess();
+                            if(mViewInt!=null) {
+                                tellviewshowsuccess();
+                            }
                         }else if(result == null){
                             Log.d("onResponse","result是空");
                         }

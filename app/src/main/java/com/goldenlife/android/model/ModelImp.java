@@ -30,8 +30,8 @@ public class ModelImp implements ModelInt {
         //Ag一一赋值并保存至表
         AgActual agActual = new AgActual();
         agActual.setBuypri(result.ag.agbuypri);
-        agActual.setMaxpri(result.ag.agmaxpri);
-        agActual.setMidpri(result.ag.agmidpri);
+        agActual.setMaxpri(result.ag.agbuypri);
+        agActual.setMidpri(result.ag.agbuypri);
         agActual.setMinpri(result.ag.agminpri);
         agActual.setCloseyes(result.ag.agcloseyes);
         agActual.setQuantpri(result.ag.agquantpri);

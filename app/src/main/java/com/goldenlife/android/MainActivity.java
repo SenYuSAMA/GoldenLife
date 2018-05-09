@@ -1,5 +1,6 @@
 package com.goldenlife.android;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.widget.Toast;
 
 import com.goldenlife.android.gson.Result;
 import com.goldenlife.android.presenter.MyPresenter;
+import com.goldenlife.android.presenter.UpdateDBService;
 import com.goldenlife.android.util.HttpUtil;
 import com.goldenlife.android.util.Utility;
 import com.goldenlife.android.view.ViewInt;
@@ -30,7 +32,9 @@ public class MainActivity extends AppCompatActivity implements ViewInt{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        myPresenter = new MyPresenter(this);
+        Intent intent = new Intent(this, UpdateDBService.class);
+        startService(intent);
+        myPresenter = new MyPresenter(this);//把自己注入MyPresenter(通过MyPresenter的构造方法)
         testButton = (Button)findViewById(R.id.test);
         testButton.setOnClickListener(new View.OnClickListener() {
             @Override

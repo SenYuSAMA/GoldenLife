@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#181b22">
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/au_current_price"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="#181b22"
+        >
+
+        <TextView
+            android:id="@+id/au_buypri"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="30dp"
+            android:text="1311.70"
+            android:textColor="#1b9417"
+            android:textSize="60sp" />
+
+        <TextView
+            android:id="@+id/au_quantpri"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:paddingLeft="40dp"
+            android:text="-2.31"
+            android:textColor="#1b9417"
+            android:textSize="25sp" />
+    </LinearLayout>
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#242633"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#242633"
+            android:gravity="bottom"
+            android:text="昨收盘"
+            android:textColor="#d0d6e7"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/au_closeyes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:background="#242633"
+            android:text="1314.01"
+            android:textColor="#1b9417"
+            android:textSize="24sp" />
+    </RelativeLayout>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#181b22"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#181b22"
+            android:gravity="bottom"
+            android:text="今开盘"
+            android:textColor="#d0d6e7"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/au_todayopen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:background="#181b22"
+            android:text="1315.15"
+            android:textColor="#1b9417"
+            android:textSize="24sp" />
+    </RelativeLayout>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#242633"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#242633"
+            android:gravity="bottom"
+            android:text="最高价"
+            android:textColor="#d0d6e7"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/au_maxpri"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:background="#242633"
+            android:text="1318.90"
+            android:textColor="#1b9417"
+            android:textSize="24sp" />
+    </RelativeLayout>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#181b22"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#181b22"
+            android:gravity="bottom"
+            android:text="最低价"
+            android:textColor="#d0d6e7"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/au_minpri"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:background="#181b22"
+            android:text="1310.42"
+            android:textColor="#1b9417"
+            android:textSize="24sp" />
+    </RelativeLayout>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#242633"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#242633"
+            android:gravity="bottom"
+            android:text="中间价"
+            android:textColor="#d0d6e7"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/au_midpri"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:background="#242633"
+            android:text="1312.60"
+            android:textColor="#1b9417"
+            android:textSize="24sp" />
+    </RelativeLayout>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#181b22"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#181b22"
+            android:gravity="bottom"
+            android:text="卖出价"
+            android:textColor="#d0d6e7"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/au_sellpri"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:background="#181b22"
+            android:text="1313.50"
+            android:textColor="#1b9417"
+            android:textSize="24sp" />
+    </RelativeLayout>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#242633"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#242633"
+            android:gravity="bottom"
+            android:text="更新时间"
+            android:textColor="#d0d6e7"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/au_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:background="#242633"
+            android:text="2018-05-07 20:34:01.0"
+            android:textColor="#ffd700"
+            android:textSize="24sp" />
+    </RelativeLayout>
+</LinearLayout>

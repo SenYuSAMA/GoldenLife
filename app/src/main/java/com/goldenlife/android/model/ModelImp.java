@@ -8,6 +8,8 @@ import com.goldenlife.android.db.PdActual;
 import com.goldenlife.android.db.PtActual;
 import com.goldenlife.android.gson.Result;
 
+import org.litepal.crud.DataSupport;
+
 /**
  * Created by 森宇 on 2018/5/8.
  */
@@ -30,8 +32,8 @@ public class ModelImp implements ModelInt {
         //Ag一一赋值并保存至表
         AgActual agActual = new AgActual();
         agActual.setBuypri(result.ag.agbuypri);
-        agActual.setMaxpri(result.ag.agbuypri);
-        agActual.setMidpri(result.ag.agbuypri);
+        agActual.setMaxpri(result.ag.agmaxpri);
+        agActual.setMidpri(result.ag.agmidpri);
         agActual.setMinpri(result.ag.agminpri);
         agActual.setCloseyes(result.ag.agcloseyes);
         agActual.setQuantpri(result.ag.agquantpri);
@@ -65,5 +67,31 @@ public class ModelImp implements ModelInt {
         pdActual.setTodayopen(result.pd.pdtodayopen);
         pdActual.setUpdatetime(result.pd.pdupdatetime);
         pdActual.save();
+
+        AgActual agActual1 = DataSupport.findLast(AgActual.class);
+    }
+
+    @Override
+    public AgActual queryAg() {
+        AgActual lastAg = DataSupport.findLast(AgActual.class);
+        return lastAg;
+    }
+
+    @Override
+    public AuActual queryAu() {
+        AuActual lastAu = DataSupport.findLast(AuActual.class);
+        return lastAu;
+    }
+
+    @Override
+    public PdActual queryPd() {
+        PdActual lastPd = DataSupport.findLast(PdActual.class);
+        return lastPd;
+    }
+
+    @Override
+    public PtActual queryPt() {
+        PtActual lastPt = DataSupport.findLast(PtActual.class);
+        return lastPt;
     }
 }

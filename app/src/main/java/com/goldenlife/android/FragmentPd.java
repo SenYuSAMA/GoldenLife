@@ -1,5 +1,6 @@
 package com.goldenlife.android;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -13,6 +14,7 @@ import com.goldenlife.android.db.AuActual;
 import com.goldenlife.android.db.PdActual;
 import com.goldenlife.android.presenter.FragmentPresenter;
 import com.goldenlife.android.view.FragViewInt;
+import com.goldenlife.android.view.ViewInt;
 
 import org.litepal.crud.DataSupport;
 
@@ -47,6 +49,17 @@ public class FragmentPd extends Fragment implements FragViewInt{
         fragmentPresenter.updatePd();
     }
 
+   /* @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if(isVisibleToUser){
+            Log.d("钯金","对用户可见");
+
+        }else{
+            Log.d("钯金","不可见");
+        }
+    }*/
+
     @Override
     public void showData(DataSupport dataSupport) {
         PdActual pd = (PdActual)dataSupport;
@@ -70,14 +83,26 @@ public class FragmentPd extends Fragment implements FragViewInt{
         tvtime = super.getView().findViewById(R.id.pd_time);
         tvquan = super.getView().findViewById(R.id.pd_quantpri);
 
-        tvbuy.setText(buyprice.toString());
+        if(quan <= 0){
+            tvbuy.setText(buyprice.toString() + "↓");
+            tvquan.setText(quan.toString());
+            tvbuy.setTextColor(Color.rgb(27,148,23));
+            tvquan.setTextColor(Color.rgb(27,148,23));
+        }else if(quan > 0){
+            tvbuy.setText(buyprice.toString()+ "↑");
+            tvquan.setText(quan.toString() );
+            tvbuy.setTextColor(Color.RED);
+            tvquan.setTextColor(Color.RED);
+        }
+
+
         tvsell.setText(sellprice.toString());
         tvmax.setText(maxprice.toString());
         tvmin.setText(minprice.toString());
         tvyes.setText(closeyes.toString());
         tvtoday.setText(todayopen.toString());
         tvmid.setText(midpirce.toString());
-        tvquan.setText(quan.toString());
+
         tvtime.setText(time);
     }
 }

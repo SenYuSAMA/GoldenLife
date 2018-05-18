@@ -1,5 +1,6 @@
 package com.goldenlife.android;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -47,6 +48,17 @@ public class FragmentAg extends Fragment implements FragViewInt{
         fragmentPresenter.updateAg();
     }
 
+/*    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if(isVisibleToUser){
+            Log.d("白银","对用户可见");
+
+        }else{
+            Log.d("白银","不可见");
+        }
+    }*/
+
     @Override
     public void showData(DataSupport dataSupport) {
         AgActual ag = (AgActual)dataSupport;
@@ -60,6 +72,7 @@ public class FragmentAg extends Fragment implements FragViewInt{
         Float quan = ag.getQuantpri();
         String time = ag.getUpdatetime();
 
+        tvquan = super.getView().findViewById(R.id.ag_quantpri);
         tvbuy = super.getView().findViewById(R.id.ag_buypri);
         tvsell = super.getView().findViewById(R.id.ag_sellpri);
         tvmax = super.getView().findViewById(R.id.ag_maxpri);
@@ -68,16 +81,26 @@ public class FragmentAg extends Fragment implements FragViewInt{
         tvtoday = super.getView().findViewById(R.id.ag_todayopen);
         tvmid = super.getView().findViewById(R.id.ag_midpri);
         tvtime = super.getView().findViewById(R.id.ag_time);
-        tvquan = super.getView().findViewById(R.id.ag_quantpri);
 
-        tvbuy.setText(buyprice.toString());
+        if(quan <= 0){
+            tvbuy.setText(buyprice.toString() + "↓");
+            tvquan.setText(quan.toString());
+            tvbuy.setTextColor(Color.rgb(27,148,23));
+            tvquan.setTextColor(Color.rgb(27,148,23));
+        }else if(quan > 0){
+            tvbuy.setText(buyprice.toString()+ "↑");
+            tvquan.setText(quan.toString());
+            tvbuy.setTextColor(Color.RED);
+            tvquan.setTextColor(Color.RED);
+        }
+
         tvsell.setText(sellprice.toString());
         tvmax.setText(maxprice.toString());
         tvmin.setText(minprice.toString());
         tvyes.setText(closeyes.toString());
         tvtoday.setText(todayopen.toString());
         tvmid.setText(midpirce.toString());
-        tvquan.setText(quan.toString());
+
         tvtime.setText(time);
 
 

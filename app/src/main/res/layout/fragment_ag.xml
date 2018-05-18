@@ -43,14 +43,16 @@
             android:text="昨收盘"
             android:textColor="#d0d6e7"
             android:textSize="15sp" />
+
         <TextView
             android:id="@+id/ag_closeyes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
             android:background="#242633"
             android:text="16.51"
-            android:textColor="#1b9417"
+            android:textColor="#fff"
             android:textSize="24sp" />
     </RelativeLayout>
 
@@ -74,7 +76,7 @@
             android:layout_alignParentEnd="true"
             android:background="#181b22"
             android:text="16.53"
-            android:textColor="#1b9417"
+            android:textColor="#fff"
             android:textSize="24sp" />
     </RelativeLayout>
 
@@ -98,7 +100,7 @@
             android:layout_alignParentEnd="true"
             android:background="#242633"
             android:text="16.45"
-            android:textColor="#1b9417"
+            android:textColor="#fff"
             android:textSize="24sp" />
     </RelativeLayout>
 
@@ -122,7 +124,7 @@
             android:layout_alignParentEnd="true"
             android:background="#181b22"
             android:text="16.41"
-            android:textColor="#1b9417"
+            android:textColor="#fff"
             android:textSize="24sp" />
     </RelativeLayout>
 
@@ -146,7 +148,7 @@
             android:layout_alignParentEnd="true"
             android:background="#242633"
             android:text="16.45"
-            android:textColor="#1b9417"
+            android:textColor="#fff"
             android:textSize="24sp" />
     </RelativeLayout>
 
@@ -170,7 +172,7 @@
             android:layout_alignParentEnd="true"
             android:background="#181b22"
             android:text="16.50"
-            android:textColor="#1b9417"
+            android:textColor="#fff"
             android:textSize="24sp" />
     </RelativeLayout>
 

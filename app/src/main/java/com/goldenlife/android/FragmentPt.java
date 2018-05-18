@@ -1,5 +1,6 @@
 package com.goldenlife.android;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -48,6 +49,17 @@ public class FragmentPt extends Fragment implements FragViewInt {
         fragmentPresenter.updatePt();
     }
 
+    /*@Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if(isVisibleToUser){
+            Log.d("铂金","对用户可见");
+
+        }else{
+            Log.d("铂金","不可见");
+        }
+    }*/
+
     @Override
     public void showData(DataSupport dataSupport) {
         PtActual pt = (PtActual)dataSupport;
@@ -71,14 +83,26 @@ public class FragmentPt extends Fragment implements FragViewInt {
         tvtime = super.getView().findViewById(R.id.pt_time);
         tvquan = super.getView().findViewById(R.id.pt_quantpri);
 
-        tvbuy.setText(buyprice.toString());
+        if(quan <= 0){
+            tvbuy.setText(buyprice.toString() + "↓");
+            tvquan.setText(quan.toString());
+            tvbuy.setTextColor(Color.rgb(27,148,23));
+            tvquan.setTextColor(Color.rgb(27,148,23));
+        }else if(quan > 0){
+            tvbuy.setText(buyprice.toString() + "↑");
+            tvquan.setText(quan.toString());
+            tvbuy.setTextColor(Color.RED);
+            tvquan.setTextColor(Color.RED);
+        }
+
+
         tvsell.setText(sellprice.toString());
         tvmax.setText(maxprice.toString());
         tvmin.setText(minprice.toString());
         tvyes.setText(closeyes.toString());
         tvtoday.setText(todayopen.toString());
         tvmid.setText(midpirce.toString());
-        tvquan.setText(quan.toString());
+
         tvtime.setText(time);
     }
 }

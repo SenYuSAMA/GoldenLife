@@ -3,32 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    >
+    android:orientation="vertical">
 
     <include layout="@layout/top"/>
 
-    <android.support.design.widget.TabLayout
-        android:id="@+id/tabs"
-        app:tabTextColor="#9c9eab"
-        app:tabSelectedTextColor="#f9f9f9"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#242633"
-        app:tabIndicatorColor="#585858"
-        app:tabMode="fixed"
-        />
-
-    <android.support.v4.view.ViewPager
-        android:id="@+id/view_pager"
-        android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:background="#181b22"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        >
-    </android.support.v4.view.ViewPager>
+        android:layout_weight="1">
 
+    </android.support.v7.widget.RecyclerView>
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -46,5 +31,4 @@
             android:layout_alignParentRight="true"
             android:text="资讯"/>
     </RelativeLayout>
-
-</LinearLayout>
+</LinearLayout>  

@@ -2,6 +2,7 @@ package com.goldenlife.android.presenter;
 
 import android.util.Log;
 
+import com.goldenlife.android.gson.News;
 import com.goldenlife.android.gson.Result;
 import com.goldenlife.android.model.ModelImp;
 import com.goldenlife.android.model.ModelInt;
@@ -14,6 +15,7 @@ import java.io.IOException;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
+import okhttp3.internal.Util;
 
 /**
  * Created by 森宇 on 2018/5/8.
@@ -34,10 +36,6 @@ public class MyPresenter {
         new Thread(new Runnable() {
             @Override
             public void run() {
-
-
-
-
         String path="http://web.juhe.cn:8080/finance/gold/bankgold?key=99b453c9cb68117ae21c0ef536ac1e68";
         HttpUtil.sendOkHttpRequest(path, new Callback() {
             @Override
@@ -46,7 +44,6 @@ public class MyPresenter {
                     mViewInt.showError();
                 }
             }
-
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 final String responseText = response.body().string();
@@ -61,14 +58,35 @@ public class MyPresenter {
                         }else if(result == null){
                             Log.d("onResponse","result是空");
                         }
-
-
-
             }
         });
             }
         }).start();
     }
+
+    public void parseNewsJson(){
+        new Thread((new Runnable() {
+            @Override
+            public void run() {
+                String path = "http://api.jisuapi.com/news/get?channel=财经&start=0&num=10&appkey=4e51586fe92728b8";
+                HttpUtil.sendOkHttpRequest(path, new Callback() {
+                    @Override
+                    public void onFailure(Call call, IOException e) {
+
+                    }
+
+                    @Override
+                    public void onResponse(Call call, Response response) throws IOException {
+                        final String responseText = response.body().string();
+                        final News news = Utility.handleNewsResponse(responseText);
+                        mViewInt.setNews(news);
+                    }
+                });
+            }
+        }));
+    }
+
+
 
     private void tellviewshowsuccess() {
         if(mViewInt !=null){

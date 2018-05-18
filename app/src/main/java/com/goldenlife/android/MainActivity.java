@@ -17,6 +17,7 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.goldenlife.android.gson.News;
 import com.goldenlife.android.gson.Result;
 import com.goldenlife.android.presenter.MyPresenter;
 import com.goldenlife.android.presenter.UpdateDBService;
@@ -36,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements ViewInt{
     MyPresenter myPresenter;
     private ViewPager mViewPager;
     private TabLayout mTabLayout;
-
+    private Button newsbtn;
 
 
     @Override
@@ -59,7 +60,14 @@ public class MainActivity extends AppCompatActivity implements ViewInt{
         Intent intent = new Intent(this, UpdateDBService.class);
         startService(intent);
         myPresenter = new MyPresenter(this);//把自己注入MyPresenter(通过MyPresenter的构造方法)
-
+        newsbtn = (Button)findViewById(R.id.btn_news);
+        newsbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,NewsActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
 
@@ -106,5 +114,16 @@ public class MainActivity extends AppCompatActivity implements ViewInt{
         });
 
 
+    }
+
+
+
+    @Override
+    public void setNews(News news) {
+
+    }
+    @Override
+    public News getNews() {
+        return null;
     }
 }

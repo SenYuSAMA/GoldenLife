@@ -23,7 +23,9 @@
         <service
             android:name=".presenter.UpdateDBService"
             android:enabled="true"
-            android:exported="true"></service>
+            android:exported="true" />
+
+        <activity android:name=".NewsActivity"></activity>
     </application>
 
 </manifest>

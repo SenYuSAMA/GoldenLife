@@ -10,5 +10,5 @@ import java.util.List;
 
 public class News {
     @SerializedName("list")
-    public List<NewsList> newslist;
+    public List<NewsList> thenewslist;
 }

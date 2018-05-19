@@ -8,6 +8,11 @@ import com.google.gson.annotations.SerializedName;
 
 public class NewsList {
 
+    public NewsList(String newstitle,String newstime){
+        this.newstitle = newstitle;
+        this.newstime = newstime;
+    }
+
     @SerializedName("title")
     public String newstitle;
 

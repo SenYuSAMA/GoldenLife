@@ -16,7 +16,7 @@
             android:id="@+id/au_buypri"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingLeft="30dp"
+            android:paddingLeft="20dp"
             android:text="1311.70"
             android:textColor="#1b9417"
             android:textSize="60sp" />

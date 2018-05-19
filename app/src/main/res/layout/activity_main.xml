@@ -23,28 +23,40 @@
         android:id="@+id/view_pager"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
         android:layout_weight="1"
         android:background="#181b22"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        >
-    </android.support.v4.view.ViewPager>
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"></android.support.v4.view.ViewPager>
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <Button
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#fff"/>
+        <Button
             android:id="@+id/btn_price"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
             android:text="报价"
             />
         <Button
             android:id="@+id/btn_news"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:text="资讯"/>
-    </RelativeLayout>
+
+            android:text="资讯" />
+        <Button
+            android:background="#fff"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
 
 </LinearLayout>

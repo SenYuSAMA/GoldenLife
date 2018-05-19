@@ -24,10 +24,7 @@ import okhttp3.internal.Util;
 public class MyPresenter {
     ModelInt mmodelInt;
     ViewInt mViewInt;
-
-
     public MyPresenter(ViewInt mViewInt){
-
             this.mViewInt = mViewInt;
             mmodelInt = new ModelImp();//*****曾因此句话丢失导致空指针错误！！！！
     }
@@ -63,41 +60,34 @@ public class MyPresenter {
             }
         }).start();
     }
-
     public void parseNewsJson(){
-        new Thread((new Runnable() {
+        /*new Thread(new Runnable() {
             @Override
-            public void run() {
-                String path = "http://api.jisuapi.com/news/get?channel=财经&start=0&num=10&appkey=4e51586fe92728b8";
+            public void run() {*/
+                String path = "http://api.jisuapi.com/news/get?channel=财经&start=0&num=20&appkey=4e51586fe92728b8";
                 HttpUtil.sendOkHttpRequest(path, new Callback() {
                     @Override
                     public void onFailure(Call call, IOException e) {
-
+                        Log.d("parseNewsJson","onFailure被调用");
                     }
-
                     @Override
                     public void onResponse(Call call, Response response) throws IOException {
                         final String responseText = response.body().string();
-                        final News news = Utility.handleNewsResponse(responseText);
+                        final News news = Utility.handleNewsResponse(responseText);//这里也返回空
                         mViewInt.setNews(news);
+                        Log.d("MyPresenter","news:"+news.thenewslist.get(0).newstitle);
                     }
                 });
-            }
-        }));
+        /*    }
+        }).start();*/
     }
-
-
-
     private void tellviewshowsuccess() {
         if(mViewInt !=null){
             mViewInt.showSuccess();
         }
     }
-
     private void tellmodlesave(Result result) {
         Log.d("tellmodlesave","准备开始调用savetodb");
         mmodelInt.savetoDB(result);
     }
-
-
 }

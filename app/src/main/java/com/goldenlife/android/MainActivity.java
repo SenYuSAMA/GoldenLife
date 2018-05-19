@@ -2,6 +2,7 @@ package com.goldenlife.android;
 
 
 import android.app.ListFragment;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -15,6 +16,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.goldenlife.android.gson.News;
@@ -40,6 +42,7 @@ public class MainActivity extends AppCompatActivity implements ViewInt{
     private Button newsbtn;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,7 +59,6 @@ public class MainActivity extends AppCompatActivity implements ViewInt{
 
         mViewPager = (ViewPager) findViewById(R.id.view_pager);
         initViewPager();//初始化ViewPager
-
         Intent intent = new Intent(this, UpdateDBService.class);
         startService(intent);
         myPresenter = new MyPresenter(this);//把自己注入MyPresenter(通过MyPresenter的构造方法)

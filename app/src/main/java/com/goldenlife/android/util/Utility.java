@@ -26,8 +26,8 @@ public class Utility {
     public static News handleNewsResponse(String response){//新闻数据
         try{
             JSONObject jsonObject = new JSONObject(response);
-            JSONArray jsonArray = jsonObject.getJSONArray("result");
-            String resultContent = jsonArray.getJSONObject(0).toString();
+            /*JSONArray jsonArray = jsonObject.getJSONArray("result");*/
+            String resultContent = jsonObject.getJSONObject("result").toString();
             return new Gson().fromJson(resultContent,News.class);
         }catch(Exception e){
             e.printStackTrace();

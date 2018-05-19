@@ -42,6 +42,7 @@ public class UpdateDBService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         myPresenter.parseJson();
+        /*myPresenter.parseNewsJson();*/
         AlarmManager manager = (AlarmManager) getSystemService(ALARM_SERVICE);
         int timeflag = 30 * 60 * 1000;//三十分钟更新一次
         long triggerAtTime = SystemClock.elapsedRealtime() + timeflag;

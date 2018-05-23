@@ -8,3 +8,8 @@
 	⑤使用ViewPager+Fragment+Tablayout实现界面滑动切换碎片展示报价。  
 	⑥使用RecycleView实现material design，展示新闻信息。  **
 ![MVP逻辑](https://i.imgur.com/8YXOQ29.png)
+***
+报价页面：  
+![](https://i.imgur.com/nkgYtb2.png)  
+新闻展示页面：  
+![](https://i.imgur.com/1gyou7j.png)

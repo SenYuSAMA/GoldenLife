@@ -2,8 +2,8 @@ package com.goldenlife.android;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.AsyncTask;
 import android.os.Build;
-import android.os.SystemClock;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,18 +18,30 @@ import android.widget.Toast;
 import com.goldenlife.android.gson.News;
 import com.goldenlife.android.gson.NewsList;
 import com.goldenlife.android.presenter.MyPresenter;
+import com.goldenlife.android.util.HttpUtil;
+import com.goldenlife.android.util.Utility;
 import com.goldenlife.android.view.ViewInt;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
+
 public class NewsActivity extends AppCompatActivity implements ViewInt{
     private News news;
-    private List<NewsList> xinwen = new ArrayList<>();
     private MyPresenter myPresenter;
     private Button pricebtn;
     private TextView titleV;
     private SwipeRefreshLayout swp;
+    private String path = "http://api.jisuapi.com/news/get?channel=财经&start=0&num=20&appkey=4e51586fe92728b8";
+    private RecyclerView recyclerView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,16 +58,14 @@ public class NewsActivity extends AppCompatActivity implements ViewInt{
         titleV = (TextView)findViewById(R.id.current_type);
         titleV.setText("财经资讯");
         myPresenter = new MyPresenter(this);
-        Log.d("NewsActivity","准备调用parseNewsJson");
-        myPresenter.parseNewsJson();
+     /*   Log.d("NewsActivity","准备调用parseNewsJson");*/
+       /* myPresenter.parseNewsJson();
         SystemClock.sleep(2500);//执行网络耗时操作，一定要等一哈,否则下一行代码会报空指针错误
         News news = getNews();
-        xinwen  = news.thenewslist;
-        RecyclerView recyclerView = (RecyclerView)findViewById(R.id.recycler_view);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(linearLayoutManager);
-        NewsAdapter newsAdapter = new NewsAdapter(xinwen);
-        recyclerView.setAdapter(newsAdapter);
+        xinwen  = news.thenewslist;*/
+       recyclerView = (RecyclerView)findViewById(R.id.recycler_view);
+        new NewsAsyncTask().execute(path);
+
         swp.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -71,6 +81,53 @@ public class NewsActivity extends AppCompatActivity implements ViewInt{
                 startActivity(intent);
             }
         });
+    }
+
+    class NewsAsyncTask extends AsyncTask<String,Integer,List<NewsList>>{
+
+        @Override
+        protected List<NewsList> doInBackground(String... strings) {
+            return getNewsJson(strings[0]);
+        }
+
+        @Override
+        protected void onPostExecute(List<NewsList> newsLists) {
+            super.onPostExecute(newsLists);
+            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(NewsActivity.this);
+            recyclerView.setLayoutManager(linearLayoutManager);
+            NewsAdapter newsAdapter = new NewsAdapter(newsLists);
+            recyclerView.setAdapter(newsAdapter);
+        }
+    }
+
+    private List<NewsList> getNewsJson(String string) {
+        List<NewsList> newsList = new ArrayList<>();
+        try {
+            String response = readStream(new URL(string).openStream());
+            Log.d("getNewsJson",response);
+            News news = Utility.handleNewsResponse(response);
+            newsList = news.thenewslist;
+            return newsList;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return newsList;
+    }
+
+    private String readStream(InputStream inputStream) {
+        InputStreamReader isr;
+        String result = "";
+        try {
+            String line = "";
+            isr = new InputStreamReader(inputStream, "utf-8");
+            BufferedReader br = new BufferedReader(isr);
+            while ((line = br.readLine()) != null) {
+                result += line;
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return result;
     }
 
     @Override
